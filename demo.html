@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var aa = {
+        continue:'<div></div>',
+        html:[
+            {
+                continue:"<div></div>",
+                html:[
+                    {
+                        continue:"<ul></ul>",
+                        html:[
+
+                        ]
+                    },{
+                        continue:"<ul></ul>",
+                        html:[
+                            {
+                                continue:"<li></li>",
+                                html:[]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                continue:"<div></div>",
+                html:[
+                    {
+                        continue:"<ul></ul>",
+                        html:[
+
+                        ]
+                    }
+                ]
+            }
+        ]
+    };
+    function abc(data) {
+        var datas=data;
+        function abcd() {
+
+        }
+        var sz=[];
+        abcd.prototype={
+            abcde:function (data,index) {
+                index=index+1;
+                for(var i=0;i<data.html.length;i++){
+                    if(data.html[i]){
+                        this.abcde(data.html[i],index);
+                    }
+                }
+                sz.push({continue:data.continue,index:index});
+            },
+            abcdf:function (data) {
+                var sz=[];
+                var num=null;
+                for(var i=0;i<data.length;i++){
+                    if(i>0 && data[i].index == data[i-1].index){
+                        data[i].continue=data[i-1].continue+data[i].continue;
+                    }else if(i>0 && data[i].index == data[i-1].index -1 ){
+                        data[i].continue=data[i].continue.replace('><','>'+data[i-1].continue+'<');
+                    }else if(i>0 && data[i].index > data[i-1].index){
+                        sz[0]=(data[i-1]);
+                        num=data[i-1].index;
+                    }
+                    if(data[i].index == num){
+                        data[i].continue=sz[0].continue+data[i].continue;
+                    }
+                }
+                return data[data.length-1]
+            }
+        }
+        var abcd=new abcd();
+        abcd.abcde(datas,0);
+        return abcd.abcdf(sz);
+    }
+    abc(aa);
+</script>
+</body>
+</html>
