@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="aa"></div>
+<script>
+    var jj=[{
+            name:'部门1',
+            text:"11",
+            name2:[
+                {
+                    name:'部门12',
+                    text:"22",
+                    name2:[
+                        {
+                            name:'部门12',
+                            text:"33",
+                            name2:[
+                                {
+                                    name:'部门12',
+                                    text:"44",
+                                    name2:[]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },{
+        name:'部门2',
+        text:"111",
+        name2:[
+            {
+                name:'部门22',
+                text:"222",
+                name2:[]
+            }
+        ]
+    }]
+    function department(json) {
+        var main='';
+        var index=0;
+        function abc() {
+
+        }
+        abc.prototype={
+            jj:function (data,indexs) {
+                index=index+1
+                console.log(11,index)
+                for(var i=0;i<data.length;i++){
+                    if(data[i].name2.length>0){
+                        var tt = this.div(data[i].text,index);
+                        main=main+tt
+                        this.jj(data[i].name2,index);
+                    }else{
+                        var tt = this.div(data[i].text,index);
+                        main=main+tt
+                    }
+                }
+                index=index-1
+                return main
+            },
+            div:function (div,index) {
+                var px='padding-left:'+20*index+'px';
+                return '<div style='+px+'>'+div+'</div>'
+            }
+        }
+        var abcd=new abc();
+        abcd.jj(json)
+        return main
+    }
+    department(jj);
+    document.getElementById('aa').innerHTML= department(jj)
+    console.log(111,department(jj))
+</script>
+</body>
+</html>
